@@ -8,7 +8,7 @@ const EcommerceStore = () => {
         <header className="header">
             <div className="container"> 
                 <div className="top-bar">
-                    <div className="logo"> Shop-with-austi</div>
+                    <div className="logo"> Shop-with-austii</div>
                     <div className="search-bar">
                         <input type="text" placeholder="Search for products.../" />
                         <button>
@@ -34,7 +34,6 @@ const EcommerceStore = () => {
                         <li><a href="#" className="active">Home</a></li>
                         <li><a href="#" className="active">Electronics</a></li>
                         <li><a href="#" className="active">Clothing</a></li>
-                        <li><a href="#" className="active">Home & Kitchen</a></li>
                         <li><a href="#" className="active">Beauty</a></li>
                         <li><a href="#" className="active">Sports</a></li>
                         <li><a href="#" className="active">Deals</a></li>
