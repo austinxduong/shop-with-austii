@@ -46,6 +46,39 @@ const messagesEndRef = useRef(null)
 
         setMessages(prevMessages => [...prevMessages, message])
         setInputValue("")
+
+        const endpoint = threadId ? `http://localhost:8000/chat/${threadId}`
+        : 'http://localhost:8000/chat'
+
+        try {
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: inputValue
+                })
+            })
+            if (!response.ok) {
+                throw new Error(`HTTP error: status: ${response.status}`)
+            }
+            const data = await response.json()
+            console.log('Success', data)
+
+            const agentResponse = {
+                text: data.response,
+                isAgent: true,
+                threadId: data.threadId
+            }
+
+            setMessages(prevMessages => [...prevMessages, agentResponse])
+            setThreadId(data.threadId)
+            console.log(messages)
+
+        } catch (error) {
+            console.log('Error:', error)
+        }
     }
 
     return (

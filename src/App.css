@@ -280,7 +280,8 @@ font-size: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* chat widget */
+/**************************************************/
+/* chat widget MOBILE*/
 
 @media screen and (max-width: 768px)  {
 
@@ -428,9 +429,9 @@ message-input:focus {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-
 }
-
+/**************************************************/
+/* chat widget - FULL SIZE browser*/
 
 .chat-widget-container {
   position: fixed;
