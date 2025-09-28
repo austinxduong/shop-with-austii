@@ -1,8 +1,53 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { FaRobot, FaPaperPlane, FaTimes, FaCommentDots } from 'react-icons/fa'
 
-const isOpen = true
+
 const ChatWidget = () => {
+const [isOpen, setIsOpen] = useState(false)
+const [messages, setMessages] = useState([])
+const [inputValue, setInputValue] = useState('')
+const [threadId, setThreadId] = useState(null)
+const messagesEndRef = useRef(null)
+
+    useEffect(() => {
+        if (isOpen && messages.length === 0) {
+            const initialMessages = [
+                {
+                    text: "hey! i'm your shopping assistant. how can i help you today?",
+                    isAgent: true
+                }
+            ]
+            setMessages(initialMessages)
+        }
+    }, [isOpen, messages.length])
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }, [messages])
+
+    const toggleChat = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const handleInputChange  = (e) => {
+        setInputValue(e.target.value)
+    }
+
+    console.log(messages)
+
+    const handleSendMessage = async (e) => {
+        e.preventDefault()
+        console.log(inputValue)
+
+        const message = {
+            text: inputValue,
+            isAgent: false
+        }
+
+        setMessages(prevMessages => [...prevMessages, message])
+        setInputValue("")
+    }
+
     return (
         <div className={`chat-widget-container ${isOpen ? 'open' : ''}`}>
             {isOpen ? (
@@ -27,10 +72,10 @@ const ChatWidget = () => {
                             </div>
                         ))}
 
-                        <div ref={messageEndRef}/>
+                        <div ref={messagesEndRef}/>
                     </div>
 
-                    <form className="chat-input-container" onSubmit={handleMessage}>
+                    <form className="chat-input-container" onSubmit={handleSendMessage}>
                         <input
                         type="text"
                         className="message-input"

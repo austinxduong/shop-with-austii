@@ -108,7 +108,7 @@ const EcommerceStore = () => {
             </div>
         </footer>
 
-        {/* <ChatWidget/> */}
+        <ChatWidget/>
 
         </>
     )
