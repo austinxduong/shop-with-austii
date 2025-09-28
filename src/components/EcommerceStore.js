@@ -34,9 +34,9 @@ const EcommerceStore = () => {
                         <li><a href="#" className="active">Home</a></li>
                         <li><a href="#" className="active">Electronics</a></li>
                         <li><a href="#" className="active">Clothing</a></li>
-                        <li><a href="#" className="active">Beauty</a></li>
+                        {/* <li><a href="#" className="active">Beauty</a></li>
                         <li><a href="#" className="active">Sports</a></li>
-                        <li><a href="#" className="active">Deals</a></li>
+                        <li><a href="#" className="active">Deals</a></li> */}
                     </ul>
                 </nav>
             </div>
