@@ -13,7 +13,7 @@ const messagesEndRef = useRef(null)
         if (isOpen && messages.length === 0) {
             const initialMessages = [
                 {
-                    text: "hey! i'm your shopping assistant. how can i help you today?",
+                    text: "hey, im austi! your shopping assistant. how can i help you today?",
                     isAgent: true
                 }
             ]
