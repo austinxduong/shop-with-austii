@@ -41,30 +41,29 @@ const messagesEndRef = useRef(null)
 
         const message = {
             text: inputValue,
-            isAgent: false
+            isAgent: false,
         }
 
         setMessages(prevMessages => [...prevMessages, message])
         setInputValue("")
 
-        const endpoint = threadId ? `http://localhost:8000/chat/${threadId}`
-        : 'http://localhost:8000/chat'
+        const endpoint = threadId ? `http://localhost:8000/chat/${threadId}` : 'http://localhost:8000/chat'
 
         try {
             const response = await fetch(endpoint, {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     message: inputValue
-                })
+                }),
             })
             if (!response.ok) {
                 throw new Error(`HTTP error: status: ${response.status}`)
             }
             const data = await response.json()
-            console.log('Success', data)
+            console.log('Success:', data)
 
             const agentResponse = {
                 text: data.response,
@@ -98,8 +97,7 @@ const messagesEndRef = useRef(null)
                     <div className="chat-messages">
                         {messages.map((message, index) => (
                             <div key={index}> 
-                                <div className={`message ${message.isAgent ? 
-                                    'message-bot' : 'message-user'}`}>
+                                <div className={`message ${message.isAgent ? 'message-bot' : 'message-user'}`}>
                                     {message.text}
                                 </div>
                             </div>
@@ -110,18 +108,18 @@ const messagesEndRef = useRef(null)
 
                     <form className="chat-input-container" onSubmit={handleSendMessage}>
                         <input
-                        type="text"
-                        className="message-input"
-                        placeholder="type your message..."
-                        value={inputValue}
-                        onChange={handleInputChange}
+                            type="text"
+                            className="message-input"
+                            placeholder="type your message..."
+                            value={inputValue}
+                            onChange={handleInputChange}
                         />
                         <button
                             type="submit"
                             className="send-button"
-                            disabled={inputValue.trim() === ""}
+                            disabled={inputValue.trim() === ''}
                         >
-                            <FaPaperPlane size={16}/>
+                            <FaPaperPlane size={16} />
                         </button>
                     </form>
                 </> 
@@ -130,7 +128,6 @@ const messagesEndRef = useRef(null)
                         <FaCommentDots/>
                     </button>
                 )}
-
         </div>
     )
 }
